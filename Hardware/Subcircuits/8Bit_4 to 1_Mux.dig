@@ -47,12 +47,12 @@
       <elementName>Out</elementName>
       <elementAttributes>
         <entry>
-          <string>Label</string>
-          <string>Out_7</string>
-        </entry>
-        <entry>
           <string>rotation</string>
           <rotation rotation="1"/>
+        </entry>
+        <entry>
+          <string>Label</string>
+          <string>Out_7</string>
         </entry>
       </elementAttributes>
       <pos x="1020" y="180"/>
@@ -159,12 +159,12 @@
       <elementName>In</elementName>
       <elementAttributes>
         <entry>
-          <string>Label</string>
-          <string>Not_7</string>
-        </entry>
-        <entry>
           <string>rotation</string>
           <rotation rotation="3"/>
+        </entry>
+        <entry>
+          <string>Label</string>
+          <string>Not_7</string>
         </entry>
       </elementAttributes>
       <pos x="300" y="160"/>
@@ -248,7 +248,7 @@
         </entry>
         <entry>
           <string>Label</string>
-          <string>Not_2</string>
+          <string>Not_1</string>
         </entry>
       </elementAttributes>
       <pos x="540" y="160"/>
