@@ -1,68 +1,141 @@
-# Custom 8-bit CPU Project
+# Custom 8-bit CPU
 
-## 📜 Overview
-This project is a ground-up design of a custom 8-bit computer system. It encompasses the entire computing stack: from silicon-level gate logic and a custom Instruction Set Architecture (ISA) to a physical custom PCB and a lightweight software ecosystem.
+An archived digital-logic and VHDL project exploring the ground-up design of a custom 8-bit CPU.
 
-The goal is to create a fully standalone computing platform capable of running a custom operating system and user-defined programs.
+This project was originally developed as a hands-on exercise in digital logic, computer architecture, and VHDL. The CPU was designed hierarchically in **Digital by H. Neemann**, beginning with basic logic blocks and progressively combining them into larger CPU components.
 
----
+The project reached approximately **70% completion** before development was discontinued. This repository preserves the implemented portion of the design, including the original Digital schematics, corresponding VHDL modules, and schematic renders.
 
-## ⚙️ Core Specifications
-
-### Central Processing Unit
-* **Data Bus:** 8-bit
-* **Address Bus:** 24-bit (supporting up to 16 MB of memory)
-* **Clock Speed:** Target ~2 MHz
-* **Architecture:** Custom ISA with a focus on modularity
-
-### Memory Map
-* **Base RAM:** 512 KB
-* **Max Addressable RAM:** 16 MB
-* **I/O Model:** Planned memory-mapped I/O for peripherals
-
-### Display & Audio
-* **Display:** 480 × 320 LCD via RGB332 (8-bit color)
-* **Audio:** Software-generated square wave mixing via an onboard buzzer
+> **Status:** Archived — approximately 70% complete  
+> **Original development:** 2026  
+> **Current purpose:** Preservation of the original design and development work
 
 ---
 
-## 🛠 Hardware & Manufacturing Flow
+## Architecture
 
-The transition from logic design to physical hardware follows a rigorous EDA (Electronic Design Automation) pipeline:
+The CPU was intended to use a custom architecture with:
 
-1. **Logic Design:** Prototyped and verified in **Digital** (by H. Neemann).
-2. **Hardware Description:** Logic converted to **VHDL** for synthesis.
-3. **Silicon Layout:** Synthesized to **GDSII** using the **OpenLANE** flow.
-4. **System Integration:**
-    * **Custom PCB:** A bespoke circuit board designed to interface the CPU with memory and peripherals.
-    * **Power System:** Integrated **Lithium battery** management (planned) for portable operation.
+- **8-bit data path**
+- **24-bit address bus**
+- **Up to 16 MB addressable memory**
+- **~2 MHz target clock**
+- **Custom instruction set architecture**
 
----
-
-## 💾 Software & Bootloader
-
-* **Bootloader:** Stored in EEPROM; handles hardware initialization and OS loading.
-* **Storage:** Parallel Flash-based cartridges for program and game storage.
-* **Operating System:** A lightweight, text-based OS (Planned), inspired by Game Boy-style efficiency.
-* **Drivers:** Dedicated low-level drivers for Framebuffer management and Audio synthesis.
+The design was built from smaller reusable digital components rather than starting from a pre-existing processor core.
 
 ---
 
-## 🚀 Project Roadmap
+## Implemented Logic
 
-- [x] Initial CPU Logic Design (Digital)
--  VHDL Conversion & Verification (In Progress)
-- [ ] GDSII Physical Layout (OpenLANE)
-- [ ] Custom PCB Design & Fabrication
-- [ ] Lithium Battery Power Circuitry
-- [ ] OS Kernel Development
-- [ ] Video/Audio Driver Implementation
+The archived design contains the following modules:
+
+### Fundamental Components
+
+- 1-bit Full Adder
+- 1-bit Register Cell
+- 2-to-1 Multiplexer
+- 4-to-1 Multiplexer
+
+### Multi-bit Components
+
+- 8-bit 2-to-1 Multiplexer
+- 8-bit 4-to-1 Multiplexer
+- 8-bit Full Adder
+- 16-bit 2-to-1 Multiplexer
+- 16-bit AND Array
+- 16-bit Register
+
+### CPU Components
+
+- Arithmetic Logic Unit (ALU)
+- Bitwise Operation Unit
+- Shifter
+- Program Counter
+- Stack Pointer
+- Arithmetic Toggle Logic
+
+Each module is preserved both as a **Digital schematic (`.dig`)** and as its corresponding **VHDL implementation (`.vhdl`)**.
 
 ---
 
-## ⚖️ License
+## Design Progression
+
+The project was developed hierarchically, starting from elementary logic and gradually building larger datapath components.
+
+### 1-bit Full Adder
+
+![1-bit Full Adder](images/1Bit_FullAdder.png)
+
+The full adder formed one of the fundamental arithmetic building blocks used later in the wider arithmetic circuitry.
+
+### 8-bit Full Adder
+
+![8-bit Full Adder](images/8Bit_FullAdder.png)
+
+Individual arithmetic blocks were combined to construct an 8-bit datapath.
+
+### 16-bit Register
+
+![16-bit Register](images/16bit_Reg.png)
+
+Register cells were expanded into larger storage structures for use within the processor architecture.
+
+### Arithmetic Logic Unit
+
+![ALU](images/ALU.png)
+
+The ALU integrates the arithmetic, bitwise, shifting, and selection logic developed throughout the project.
+
+### Program Counter
+
+![Program Counter](images/Program_Counter.png)
+
+The program counter was one of the larger CPU-level components completed before the project was archived.
+
+### Stack Pointer
+
+![Stack Pointer](images/Stack_Pointer.png)
+
+The stack pointer represents another completed processor-level component preserved in the repository.
+
+---
+
+## Repository Structure
+
+    8Bit_CPU/
+    ├── images/       # PNG renders of the Digital schematics
+    ├── schematics/   # Original .dig circuit files
+    ├── vhdl/         # Corresponding VHDL implementations
+    ├── LICENSE
+    ├── NOTICE
+    └── README.md
+
+The `schematics` directory preserves the original circuits created in Digital, while `vhdl` contains their hardware-description equivalents. The `images` directory provides rendered versions of the circuits for convenient viewing directly from GitHub.
+
+---
+
+## Project Context
+
+This was an early hardware-design project created to learn digital logic, hierarchical CPU design, and VHDL through direct implementation.
+
+Rather than treating the CPU as a single high-level HDL design, the project began with elementary components such as adders, multiplexers, and register cells. These were progressively composed into wider datapath elements and eventually processor-level modules such as the ALU, program counter, and stack pointer.
+
+Development was stopped at approximately 70% completion, and the remaining originally planned system-level work was not implemented. The repository is therefore preserved as an archive of the completed design work rather than presented as a finished CPU.
+
+---
+
+## Tools
+
+- **Digital by H. Neemann** — schematic design and simulation
+- **VHDL** — hardware description of the implemented modules
+- **Git** — development history and version control
+
+---
+
+## License
 
 **Copyright (C) 2026 Swastik Ulhas Hegde**
 
-This project is licensed under the **GNU General Public License v3.0**. 
+This project is licensed under the **GNU General Public License v3.0**.  
 See the [LICENSE](LICENSE) file for the full license text.
